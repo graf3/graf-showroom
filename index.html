@@ -29,13 +29,16 @@ header{position:fixed;inset:0 0 auto;z-index:50;background:rgba(0,0,0,.78);backd
 .logo{font:700 .95rem var(--disp);letter-spacing:.04em;margin-right:auto;display:flex;align-items:center;gap:10px}
 .logo i{width:10px;height:22px;background:var(--red);transform:skewX(-14deg);display:block}
 nav{display:flex;gap:4px}
-nav a{padding:8px 14px;border-radius:8px;color:var(--mute);font-size:.95rem;transition:.2s}
+nav a{padding:8px 10px;white-space:nowrap;border-radius:8px;color:var(--mute);font-size:.95rem;transition:.2s}
 nav a:hover{color:var(--silver)}
 nav a.on{color:var(--silver);box-shadow:inset 0 -2px 0 var(--red)}
-.lang{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.lang button{background:none;border:0;color:var(--mute);padding:7px 10px;font:inherit;font-size:.85rem;cursor:pointer;transition:.2s}
+.lang{position:relative}
+.lang button{background:none;border:0;color:var(--mute);font:inherit;font-size:.88rem;cursor:pointer;transition:.2s;padding:8px 12px;border-radius:8px;white-space:nowrap}
+#lb{border:1px solid var(--line);color:var(--silver)}
 .lang button:hover{color:var(--silver)}
-.lang button.on{background:var(--silver);color:#000}
+#lm{position:absolute;right:0;top:calc(100% + 10px);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px;min-width:170px;z-index:60;box-shadow:0 20px 40px rgba(0,0,0,.6)}
+#lm button{display:block;width:100%;text-align:left}
+#lm button.on{background:var(--silver);color:#000}
 .burger{display:none;background:none;border:1px solid var(--line);color:var(--silver);width:40px;height:40px;border-radius:10px;cursor:pointer;font-size:1.2rem}
 
 /* buttons */
@@ -101,6 +104,45 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--mute);font-si
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
 footer nav a{padding:4px 10px}
 
+nav a.nc{background:var(--red);color:#fff;font-weight:600}
+nav a.nc:hover{background:var(--red2);color:#fff}
+.tgl{display:inline-flex;margin-top:22px;border:1px solid var(--line);border-radius:12px;padding:4px;background:var(--card)}
+.tgl button{background:none;border:0;color:var(--mute);font:inherit;font-size:.9rem;padding:9px 16px;border-radius:8px;cursor:pointer;transition:.2s}
+.tgl button.on{background:var(--silver);color:#000}
+.small{color:var(--mute);font-size:.85rem;margin-top:12px;max-width:70ch}
+.sub{font:500 1.15rem var(--disp);margin-top:72px}
+.state{grid-column:1/-1;display:flex;flex-direction:column;align-items:flex-start;gap:14px;background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:26px;color:var(--mute)}
+.spin{width:22px;height:22px;border:3px solid var(--line);border-top-color:var(--red);border-radius:50%;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.wkg,#rv{margin-top:36px}
+.wk{overflow:hidden}
+.wk img{display:block;width:calc(100% + 52px);margin:-26px -26px 4px;aspect-ratio:16/10;object-fit:cover;background:#0b0b0c}
+.wk p,.upd p{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;white-space:pre-line}
+.wk p{-webkit-line-clamp:4}
+.dt{color:var(--mute);font-size:.82rem}
+.ups{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:20px}
+.upd{display:block;border-left:2px solid var(--red);padding:4px 0 4px 16px;transition:.2s}
+.upd:hover{background:var(--card);border-left-color:var(--silver)}
+.upd p{-webkit-line-clamp:3;margin-top:4px;color:#b4b8c0;font-size:.93rem}
+.stars{color:var(--red2);letter-spacing:3px}
+.shot img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--silver);border-radius:16px;padding:26px 30px;margin-top:28px;display:grid;gap:12px;max-width:820px}
+.note p{color:#b4b8c0}.note p.hl{color:var(--silver);font-weight:600}
+.note h3{font:500 1.05rem var(--disp)}
+.note.reg{border-left-color:var(--red)}
+.two{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;margin-top:28px;align-items:start}
+.two p{color:#b4b8c0;margin-bottom:14px;max-width:60ch}
+.stack{display:grid;gap:12px}
+.com{display:flex;gap:28px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,4vw,40px);margin-top:28px}
+.com>svg{width:72px;height:72px;flex:none;fill:var(--silver);padding:16px;background:#000;border:1px solid var(--line);border-radius:18px}
+.com p{color:#b4b8c0;margin:8px 0 18px;max-width:56ch}
+@media(max-width:1040px){
+.burger{display:block}
+#nav{position:fixed;inset:64px 0 auto;background:#000;border-bottom:1px solid var(--line);flex-direction:column;padding:12px 4%;transform:translateY(-130%);transition:transform .35s;z-index:-1}
+#nav.open{transform:none}
+#nav a{padding:14px 10px;font-size:1.05rem}
+#nav a.nc{margin-top:8px;text-align:center}
+}
 /* ui */
 #toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);background:var(--silver);color:#000;padding:12px 20px;border-radius:12px;font-weight:600;opacity:0;pointer-events:none;transition:.3s;z-index:90;max-width:92vw;text-align:center}
 #toast.show{opacity:1;transform:translate(-50%,0)}
@@ -120,11 +162,7 @@ pre{background:#0b0b0c;border:1px solid var(--line);border-radius:12px;padding:1
 .js .rv.in{opacity:1;transform:none}
 
 @media(max-width:860px){
-.burger{display:block}
-nav{position:fixed;inset:64px 0 auto;background:#000;border-bottom:1px solid var(--line);flex-direction:column;padding:12px 4%;transform:translateY(-130%);transition:transform .35s;z-index:-1}
-nav.open{transform:none}
-nav a{padding:14px 10px;font-size:1.05rem}
-.adv{grid-template-columns:1fr}
+.adv{grid-template-columns:1fr}.two{grid-template-columns:1fr}.com{flex-direction:column;align-items:flex-start}
 .form{grid-template-columns:1fr}
 section{padding:72px 0}
 }
@@ -133,18 +171,29 @@ section{padding:72px 0}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-vk" viewBox="0 0 24 24"><path d="M12.8 17.5c-6 0-9.4-4.1-9.5-11h3c.1 5 2.3 7.1 4.1 7.5V6.5h2.8v4.3c1.7-.2 3.5-2.1 4.1-4.3h2.8c-.5 2.7-2.4 4.6-3.8 5.4 1.4.7 3.6 2.3 4.4 5.6h-3.1c-.7-2.1-2.3-3.7-4.4-3.9v3.9h-.4z"/></symbol>
+<symbol id="i-tg" viewBox="0 0 24 24"><path d="M21.5 3.5 2.8 10.7c-.9.4-.9 1.1-.2 1.3l4.8 1.5 1.8 5.6c.2.6.4.8.8.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.2-.4-1.8-1.4-1.3zM9 13.5l8.5-5.3c.4-.3.8-.1.5.2L11 14.8l-.3 3.2L9 13.5z"/></symbol>
+<symbol id="i-dc" viewBox="0 0 24 24"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></symbol>
+</defs></svg>
 
 <header>
 <div class="wrap bar">
   <a class="logo" href="#home" aria-label="Graf Showroom"><i></i><span>GRAF SHOWROOM</span></a>
   <nav id="nav">
-    <a href="#home" data-i18n="nav_home"></a>
     <a href="#price" data-i18n="nav_price"></a>
+    <a href="#works" data-i18n="nav_works"></a>
+    <a href="#reviews" data-i18n="nav_reviews"></a>
     <a href="#order" data-i18n="nav_order"></a>
+    <a href="#pay" data-i18n="nav_pay"></a>
     <a href="#contact" data-i18n="nav_contact"></a>
+    <a class="nc" href="#collab" data-i18n="nav_collab"></a>
   </nav>
-  <div class="lang" role="group" aria-label="Language">
-    <button data-l="ru">🇷🇺 RU</button><button data-l="en">🇬🇧 EN</button><button data-l="de">🇩🇪 DE</button>
+  <div class="lang">
+    <button id="lb" aria-haspopup="true" aria-expanded="false" aria-label="Language"><span id="lcur">🇷🇺 RU</span> ▾</button>
+    <div id="lm" hidden>
+      <button data-l="ru" data-f="🇷🇺">🇷🇺 Русский</button><button data-l="en" data-f="🇬🇧">🇬🇧 English</button><button data-l="de" data-f="🇩🇪">🇩🇪 Deutsch</button><button data-l="es" data-f="🇪🇸">🇪🇸 Español</button><button data-l="pt" data-f="🇧🇷">🇧🇷 Português</button>
+    </div>
   </div>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
 </div>
@@ -172,7 +221,30 @@ section{padding:72px 0}
   <div class="wrap">
     <h2 class="rv" data-i18n="price_t"></h2>
     <p class="lead rv" data-i18n="price_d"></p>
+    <div class="tgl rv"><button class="on" data-r="fixed" data-i18n="rate_fixed"></button><button data-r="live" data-i18n="rate_live"></button></div>
+    <p class="small" data-i18n="rate_note"></p>
     <div id="cats"></div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <h2 class="rv" data-i18n="works_t"></h2>
+    <p class="lead rv" data-i18n="works_d"></p>
+    <div class="grid" id="wk"><div class="state"><i class="spin"></i><span data-i18n="loading"></span></div></div>
+    <div class="cta" style="margin-top:28px"><a class="btn red" href="https://vk.ru/grafshw" target="_blank" rel="noopener" data-i18n="works_all"></a></div>
+    <h3 class="sub rv" data-i18n="upd_t"></h3>
+    <p class="lead rv" data-i18n="upd_d"></p>
+    <div class="ups" id="up"><div class="state"><i class="spin"></i><span data-i18n="loading"></span></div></div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <h2 class="rv" data-i18n="rev_t"></h2>
+    <p class="lead rv" data-i18n="rev_d"></p>
+    <div class="grid" id="rv"><div class="state"><i class="spin"></i><span data-i18n="loading"></span></div></div>
+    <div class="cta" style="margin-top:28px"><a class="btn" href="https://t.me/hasik208" target="_blank" rel="noopener" data-i18n="rev_leave"></a></div>
   </div>
 </section>
 
@@ -196,6 +268,38 @@ section{padding:72px 0}
   </div>
 </section>
 
+<section id="pay">
+  <div class="wrap">
+    <h2 class="rv" data-i18n="pay_t"></h2>
+    <div class="note rv"><p data-i18n="pay_1"></p><p data-i18n="pay_2"></p><p data-i18n="pay_3"></p><p class="hl" data-i18n="pay_4"></p></div>
+    <div class="note reg rv"><h3 data-i18n="reg_t"></h3><p data-i18n="reg_1"></p><p data-i18n="reg_2"></p><p data-i18n="reg_3"></p></div>
+  </div>
+</section>
+
+<section id="collab">
+  <div class="wrap">
+    <h2 class="rv" data-i18n="nav_collab"></h2>
+    <div class="two rv">
+      <div><p data-i18n="collab_1"></p><p data-i18n="collab_2"></p><p data-i18n="collab_3"></p></div>
+      <div class="stack">
+        <a class="btn red" href="https://t.me/hasik208" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#i-tg"/></svg><span data-i18n="btn_tg"></span></a>
+        <a class="btn" href="https://vk.ru/makdok7826" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#i-vk"/></svg><span data-i18n="btn_vkm"></span></a>
+        <a class="btn" href="https://discord.gg/SRHA9T7qjF" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#i-dc"/></svg><span data-i18n="btn_dc"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="wrap">
+    <div class="com rv">
+      <svg viewBox="0 0 24 24"><use href="#i-dc"/></svg>
+      <div><h2 data-i18n="com_t"></h2><p data-i18n="com_d"></p>
+      <a class="btn red" href="https://discord.gg/SRHA9T7qjF" target="_blank" rel="noopener" data-i18n="btn_dc"></a></div>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap">
     <h2 class="rv" data-i18n="contact_t"></h2>
@@ -204,6 +308,7 @@ section{padding:72px 0}
       <a class="link" href="https://vk.ru/makdok7826" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12.8 17.5c-6 0-9.4-4.1-9.5-11h3c.1 5 2.3 7.100 4.100 7.500V6.500h2.800v4.300c1.700-.2 3.500-2.100 4.100-4.300h2.800c-.5 2.700-2.400 4.600-3.800 5.400 1.400.7 3.600 2.300 4.400 5.600h-3.100c-.7-2.100-2.300-3.700-4.400-3.900v3.900h-.4z"/></svg><div><b>VK</b><span>vk.ru/makdok7826</span></div></a>
       <a class="link" href="https://t.me/hasik208" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.500 3.500 2.800 10.700c-.9.400-.9 1.100-.2 1.300l4.800 1.500 1.800 5.600c.2.600.4.800.8.800.4 0 .6-.2.900-.5l2.300-2.200 4.700 3.500c.9.500 1.500.2 1.700-.8l3.100-14.600c.3-1.200-.4-1.800-1.400-1.300zM9 13.500l8.500-5.300c.4-.3.800-.1.500.2L11 14.800l-.3 3.200L9 13.500z"/></svg><div><b>Telegram</b><span>@hasik208</span></div></a>
       <a class="link" href="https://vk.ru/grafshw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9h-8.500v-2.500h5.700A6.500 6.500 0 1 1 12 5.500c1.300 0 2.500.4 3.500 1l1.800-1.900A9 9 0 0 0 12 3z"/></svg><div><b>Graf Showroom</b><span>vk.ru/grafshw</span></div></a>
+      <a class="link" href="https://discord.gg/SRHA9T7qjF" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#i-dc"/></svg><div><b>Discord</b><span>discord.gg/SRHA9T7qjF</span></div></a>
     </div>
   </div>
 </section>
@@ -215,6 +320,7 @@ section{padding:72px 0}
     <nav style="position:static;display:flex;flex-direction:row;transform:none;background:none;border:0;padding:0">
       <a href="https://vk.ru/grafshw" target="_blank" rel="noopener">VK</a>
       <a href="https://t.me/hasik208" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://discord.gg/SRHA9T7qjF" target="_blank" rel="noopener">Discord</a>
     </nav>
   </div>
 </footer>
@@ -310,31 +416,130 @@ res_copy:"Text kopieren",res_close:"Schließen",copied:"Bestelltext kopiert",pas
 sel:"Leistung gewählt: ",contact_t:"Kontakt",contact_d:"Fragen zu Bestellung oder Preisen – schreiben Sie mir in dem Messenger, der Ihnen passt.",foot:"Spielinhalte für GTA / SAMP / FiveM"}
 };
 
+const N={
+ru:{nav_works:"Работы",nav_reviews:"Отзывы",nav_pay:"Оплата",nav_collab:"Сотрудничество",
+rate_fixed:"Фиксированные цены",rate_live:"Актуальный курс",rate_note:"Цены в евро и долларах ориентировочные: рублёвая цена остаётся основной.",rate_err:"Не удалось получить курс. Показаны фиксированные цены.",
+works_t:"Последние работы",works_d:"Примеры работ и новости из нашей группы ВКонтакте.",works_open:"Открыть публикацию",works_all:"Все работы",loading:"Загрузка…",
+works_err:"Все работы и новости смотрите в нашей группе VK.",upd_t:"Последние обновления VK",upd_d:"Новости, анонсы и важные объявления группы.",
+rev_t:"Отзывы клиентов",rev_d:"Только реальные отзывы заказчиков.",rev_empty:"Здесь появятся отзывы заказчиков. Станьте первым: напишите мне после выполнения заказа.",rev_leave:"Оставить отзыв",
+collab_1:"Открыт к сотрудничеству с игровыми проектами, серверами GTA / SAMP / FiveM, разработчиками, дизайнерами и другими творческими командами.",collab_2:"Готов рассматривать индивидуальные предложения, долгосрочное сотрудничество и совместные проекты.",collab_3:"Если у вас есть интересное предложение — свяжитесь со мной!",
+btn_tg:"Написать в Telegram",btn_vkm:"Написать в VK",btn_dc:"Присоединиться к Discord",
+pay_t:"Информация об оплате",pay_1:"Перед оформлением заказа рекомендуем связаться со мной и согласовать все детали, стоимость и сроки выполнения.",pay_2:"Способы оплаты и доступные варианты перевода обсуждаются индивидуально перед началом работы.",pay_3:"После согласования технического задания и стоимости я сообщу необходимые реквизиты и дальнейшие инструкции.",pay_4:"Пожалуйста, не отправляйте оплату до подтверждения заказа.",
+reg_t:"Клиентам из других стран",reg_1:"Обратите внимание: я нахожусь в России. В связи с международными ограничениями и особенностями работы платёжных систем у некоторых зарубежных клиентов могут возникнуть сложности с переводами, оплатой или использованием отдельных сервисов.",reg_2:"Если вы находитесь за пределами России, пожалуйста, заранее свяжитесь со мной для согласования доступного способа оплаты.",reg_3:"Я постараюсь подобрать удобный вариант для обеих сторон.",
+com_t:"Наше сообщество",com_d:"Присоединяйтесь к нашему Discord-сообществу! Общайтесь, следите за обновлениями, обсуждайте работы и оставайтесь на связи."},
+
+en:{nav_works:"Works",nav_reviews:"Reviews",nav_pay:"Payment",nav_collab:"Collaboration",
+rate_fixed:"Fixed prices",rate_live:"Live exchange rate",rate_note:"Euro and dollar prices are approximate; the ruble price is the base price.",rate_err:"Could not load the exchange rate. Fixed prices are shown.",
+works_t:"Latest works",works_d:"Examples of work and news from our VKontakte group.",works_open:"Open post",works_all:"All works",loading:"Loading…",
+works_err:"See all works and news in our VK group.",upd_t:"Latest VK updates",upd_d:"News, announcements and important notices from the group.",
+rev_t:"Client reviews",rev_d:"Real reviews from customers only.",rev_empty:"Customer reviews will appear here. Be the first: message me once your order is done.",rev_leave:"Leave a review",
+collab_1:"Open to collaboration with game projects, GTA / SAMP / FiveM servers, developers, designers and other creative teams.",collab_2:"Happy to consider individual proposals, long-term cooperation and joint projects.",collab_3:"If you have an interesting offer, get in touch!",
+btn_tg:"Message on Telegram",btn_vkm:"Message on VK",btn_dc:"Join Discord",
+pay_t:"Payment information",pay_1:"Before placing an order, we recommend contacting me to agree on all details, the price and the deadline.",pay_2:"Payment methods and available transfer options are discussed individually before work starts.",pay_3:"Once the brief and price are agreed, I will send the necessary details and further instructions.",pay_4:"Please do not send any payment until the order is confirmed.",
+reg_t:"For clients outside Russia",reg_1:"Please note: I am based in Russia. Because of international restrictions and how payment systems work, some clients abroad may have difficulties with transfers, payments or certain services.",reg_2:"If you are outside Russia, please contact me in advance so we can agree on an available payment method.",reg_3:"I will do my best to find an option that works for both sides.",
+com_t:"Our community",com_d:"Join our Discord community! Chat, follow updates, discuss works and stay in touch."},
+
+de:{nav_works:"Arbeiten",nav_reviews:"Bewertungen",nav_pay:"Zahlung",nav_collab:"Zusammenarbeit",
+rate_fixed:"Feste Preise",rate_live:"Aktueller Kurs",rate_note:"Euro- und Dollarpreise sind Richtwerte; der Rubelpreis ist maßgeblich.",rate_err:"Kurs konnte nicht geladen werden. Es werden feste Preise angezeigt.",
+works_t:"Neueste Arbeiten",works_d:"Arbeitsbeispiele und Neuigkeiten aus unserer VKontakte-Gruppe.",works_open:"Beitrag öffnen",works_all:"Alle Arbeiten",loading:"Wird geladen…",
+works_err:"Alle Arbeiten und Neuigkeiten finden Sie in unserer VK-Gruppe.",upd_t:"Neueste VK-Updates",upd_d:"Neuigkeiten, Ankündigungen und wichtige Hinweise der Gruppe.",
+rev_t:"Kundenbewertungen",rev_d:"Nur echte Bewertungen von Kunden.",rev_empty:"Hier erscheinen Kundenbewertungen. Seien Sie der Erste: Schreiben Sie mir nach Ihrer Bestellung.",rev_leave:"Bewertung schreiben",
+collab_1:"Offen für die Zusammenarbeit mit Spielprojekten, GTA / SAMP / FiveM-Servern, Entwicklern, Designern und anderen kreativen Teams.",collab_2:"Ich prüfe gern individuelle Angebote, langfristige Zusammenarbeit und gemeinsame Projekte.",collab_3:"Wenn Sie ein interessantes Angebot haben, melden Sie sich bei mir!",
+btn_tg:"Auf Telegram schreiben",btn_vkm:"Auf VK schreiben",btn_dc:"Discord beitreten",
+pay_t:"Zahlungsinformationen",pay_1:"Bevor Sie bestellen, empfehlen wir, mich zu kontaktieren und alle Details, den Preis und die Fristen abzustimmen.",pay_2:"Zahlungsarten und mögliche Überweisungswege werden vor Arbeitsbeginn individuell besprochen.",pay_3:"Sobald Aufgabenstellung und Preis abgestimmt sind, teile ich Ihnen die nötigen Zahlungsdaten und die weiteren Schritte mit.",pay_4:"Bitte senden Sie keine Zahlung, bevor die Bestellung bestätigt wurde.",
+reg_t:"Für Kunden außerhalb Russlands",reg_1:"Bitte beachten Sie: Ich lebe in Russland. Aufgrund internationaler Beschränkungen und der Funktionsweise von Zahlungssystemen können bei manchen Kunden im Ausland Schwierigkeiten bei Überweisungen, Zahlungen oder der Nutzung einzelner Dienste auftreten.",reg_2:"Wenn Sie sich außerhalb Russlands befinden, kontaktieren Sie mich bitte vorab, damit wir einen verfügbaren Zahlungsweg abstimmen können.",reg_3:"Ich werde versuchen, eine Lösung zu finden, die für beide Seiten passt.",
+com_t:"Unsere Community",com_d:"Treten Sie unserer Discord-Community bei! Tauschen Sie sich aus, verfolgen Sie Neuigkeiten, diskutieren Sie Arbeiten und bleiben Sie in Kontakt."},
+
+es:{nav_price:"Precios",nav_order:"Pedido",nav_contact:"Contacto",nav_works:"Trabajos",nav_reviews:"Reseñas",nav_pay:"Pago",nav_collab:"Colaboración",
+hero_desc:"Graf Showroom crea contenido de juego único para GTA / SAMP / FiveM. Skins de calidad, attachments personalizados, coches y desarrollo de plugins. Un trato personalizado en cada pedido.",
+btn_order:"Hacer un pedido",btn_price:"Ver precios",btn_group:"Nuestro grupo de VK",
+a1t:"Trato personalizado",a1d:"Cada pedido se hace según tu encargo técnico.",a2t:"Todo el contenido de juego",a2d:"Skins, attachments, coches y plugins para SAMP y FiveM.",a3t:"Contacto directo",a3d:"Hablas conmigo personalmente en VK o Telegram.",
+price_t:"Lista de precios",price_d:"Aquí puedes ver el coste de mis servicios de creación y edición de contenido para GTA / SAMP.",
+cat1:"Pedidos personales",cat2:"Attachments personalizados",cat3:"Desarrollo de plugins",order_btn:"Pedir",
+s1n:"Trasplante de cabeza",s1d:"Edición de modelo: traslado de una cabeza al personaje elegido.",
+s2n:"Skin de policía según tu encargo",s2d:"Creación de una skin de policía según tu encargo técnico.",
+s3n:"Pedido de coche",s3d:"Un coche para GTA / SAMP según tu petición.",
+s4n:"Pack de attachments personalizados",s4d:"Compra de mi pack de attachments personalizados.",
+s5n:"Plugin para SAMP",s5d:"Desarrollo de un plugin para SAMP según tu tarea.",s6n:"Plugin para FiveM",s6d:"Desarrollo de un plugin para FiveM según tu tarea.",
+form_t:"Hacer un pedido",form_d:"Rellena el formulario: se genera el texto del pedido y tú me lo envías por VK o Telegram.",
+f_service:"Servicio",f_choose:"Elige un servicio",f_name:"Nombre o nick del juego",f_name_ph:"Por ejemplo, Alex_Graf",f_game:"Juego",
+f_tz:"Encargo técnico",f_tz_ph:"Describe qué necesitas exactamente",f_wish:"Deseos adicionales",f_wish_ph:"Plazos, detalles, ejemplos (opcional)",
+f_link:"Enlace a tu perfil o materiales",f_link_ph:"https://",f_method:"Medio de contacto",f_contact:"Tu contacto",f_contact_ph:"@usuario o enlace de VK",
+f_submit:"Enviar pedido",err:"Rellena los campos marcados",ok:"Pedido creado",
+res_t:"Tu pedido está listo para enviar",res_d:"El pedido aún no se ha enviado. Pulsa un botón: se copia el texto y se abre mi chat; pégalo y envíalo.",
+res_copy:"Copiar texto",res_close:"Cerrar",copied:"Texto del pedido copiado",paste:"Texto copiado: pégalo en el chat y envíalo",sel:"Servicio elegido: ",
+contact_t:"Contáctame",contact_d:"¿Dudas sobre un pedido o los precios? Escríbeme en la aplicación que prefieras.",foot:"contenido de juego para GTA / SAMP / FiveM",
+rate_fixed:"Precios fijos",rate_live:"Tipo de cambio actual",rate_note:"Los precios en euros y dólares son orientativos; el precio en rublos es el de referencia.",rate_err:"No se pudo obtener el tipo de cambio. Se muestran precios fijos.",
+works_t:"Últimos trabajos",works_d:"Ejemplos de trabajos y novedades de nuestro grupo de VKontakte.",works_open:"Abrir publicación",works_all:"Todos los trabajos",loading:"Cargando…",
+works_err:"Mira todos los trabajos y novedades en nuestro grupo de VK.",upd_t:"Últimas novedades de VK",upd_d:"Noticias, anuncios y avisos importantes del grupo.",
+rev_t:"Reseñas de clientes",rev_d:"Solo reseñas reales de clientes.",rev_empty:"Aquí aparecerán las reseñas de los clientes. Sé el primero: escríbeme cuando se entregue tu pedido.",rev_leave:"Dejar una reseña",
+collab_1:"Estoy abierto a colaborar con proyectos de juegos, servidores de GTA / SAMP / FiveM, desarrolladores, diseñadores y otros equipos creativos.",collab_2:"Estudio propuestas individuales, colaboraciones a largo plazo y proyectos conjuntos.",collab_3:"Si tienes una propuesta interesante, ¡contáctame!",
+btn_tg:"Escribir por Telegram",btn_vkm:"Escribir por VK",btn_dc:"Unirse a Discord",
+pay_t:"Información de pago",pay_1:"Antes de hacer un pedido, te recomendamos contactarme para acordar todos los detalles, el precio y los plazos.",pay_2:"Los métodos de pago y las opciones de transferencia disponibles se hablan de forma individual antes de empezar el trabajo.",pay_3:"Una vez acordados el encargo técnico y el precio, te enviaré los datos necesarios y las siguientes instrucciones.",pay_4:"Por favor, no envíes ningún pago hasta que el pedido esté confirmado.",
+reg_t:"Para clientes fuera de Rusia",reg_1:"Ten en cuenta que vivo en Rusia. Debido a las restricciones internacionales y al funcionamiento de los sistemas de pago, algunos clientes del extranjero pueden tener dificultades con transferencias, pagos o el uso de ciertos servicios.",reg_2:"Si estás fuera de Rusia, contáctame con antelación para acordar un método de pago disponible.",reg_3:"Intentaré encontrar una opción cómoda para ambas partes.",
+com_t:"Nuestra comunidad",com_d:"¡Únete a nuestra comunidad de Discord! Conversa, sigue las novedades, comenta los trabajos y mantente en contacto."},
+
+pt:{nav_price:"Preços",nav_order:"Pedido",nav_contact:"Contato",nav_works:"Trabalhos",nav_reviews:"Avaliações",nav_pay:"Pagamento",nav_collab:"Parceria",
+hero_desc:"A Graf Showroom cria conteúdo de jogo exclusivo para GTA / SAMP / FiveM. Skins de qualidade, attachments personalizados, carros e desenvolvimento de plugins. Atendimento individual em cada pedido.",
+btn_order:"Fazer um pedido",btn_price:"Ver preços",btn_group:"Nosso grupo no VK",
+a1t:"Atendimento individual",a1d:"Cada pedido é feito conforme o seu briefing técnico.",a2t:"Todo tipo de conteúdo de jogo",a2d:"Skins, attachments, carros e plugins para SAMP e FiveM.",a3t:"Contato direto",a3d:"Você fala comigo pessoalmente no VK ou no Telegram.",
+price_t:"Lista de preços",price_d:"Aqui você confere o valor dos meus serviços de criação e edição de conteúdo para GTA / SAMP.",
+cat1:"Pedidos pessoais",cat2:"Attachments personalizados",cat3:"Desenvolvimento de plugins",order_btn:"Pedir",
+s1n:"Transplante de cabeça",s1d:"Edição de modelo: transferência de uma cabeça para o personagem escolhido.",
+s2n:"Skin de polícia conforme seu briefing",s2d:"Criação de uma skin de polícia conforme o seu briefing técnico.",
+s3n:"Pedido de carro",s3d:"Um carro para GTA / SAMP conforme o seu pedido.",
+s4n:"Pacote de attachments personalizados",s4d:"Compra do meu pacote de attachments personalizados.",
+s5n:"Plugin para SAMP",s5d:"Desenvolvimento de um plugin para SAMP conforme a sua tarefa.",s6n:"Plugin para FiveM",s6d:"Desenvolvimento de um plugin para FiveM conforme a sua tarefa.",
+form_t:"Fazer um pedido",form_d:"Preencha o formulário: o texto do pedido é gerado e você o envia para mim pelo VK ou Telegram.",
+f_service:"Serviço",f_choose:"Escolha um serviço",f_name:"Nome ou nick no jogo",f_name_ph:"Por exemplo, Alex_Graf",f_game:"Jogo",
+f_tz:"Briefing técnico",f_tz_ph:"Descreva exatamente o que você precisa",f_wish:"Pedidos adicionais",f_wish_ph:"Prazos, detalhes, exemplos (opcional)",
+f_link:"Link do seu perfil ou materiais",f_link_ph:"https://",f_method:"Meio de contato",f_contact:"Seu contato",f_contact_ph:"@usuario ou link do VK",
+f_submit:"Enviar pedido",err:"Preencha os campos marcados",ok:"Pedido criado",
+res_t:"Seu pedido está pronto para enviar",res_d:"O pedido ainda não foi enviado. Clique em um botão: o texto é copiado e meu chat abre; cole e envie.",
+res_copy:"Copiar texto",res_close:"Fechar",copied:"Texto do pedido copiado",paste:"Texto copiado: cole no chat e envie",sel:"Serviço escolhido: ",
+contact_t:"Fale comigo",contact_d:"Dúvidas sobre pedidos ou preços? Escreva para mim no aplicativo que preferir.",foot:"conteúdo de jogo para GTA / SAMP / FiveM",
+rate_fixed:"Preços fixos",rate_live:"Câmbio atual",rate_note:"Os preços em euros e dólares são aproximados; o preço em rublos é a referência.",rate_err:"Não foi possível obter o câmbio. Mostrando preços fixos.",
+works_t:"Últimos trabalhos",works_d:"Exemplos de trabalhos e novidades do nosso grupo no VKontakte.",works_open:"Abrir publicação",works_all:"Todos os trabalhos",loading:"Carregando…",
+works_err:"Veja todos os trabalhos e novidades no nosso grupo do VK.",upd_t:"Últimas novidades do VK",upd_d:"Novidades, anúncios e avisos importantes do grupo.",
+rev_t:"Avaliações de clientes",rev_d:"Somente avaliações reais de clientes.",rev_empty:"As avaliações dos clientes aparecerão aqui. Seja o primeiro: escreva para mim após a entrega do pedido.",rev_leave:"Deixar uma avaliação",
+collab_1:"Aberto a parcerias com projetos de jogos, servidores de GTA / SAMP / FiveM, desenvolvedores, designers e outras equipes criativas.",collab_2:"Disponível para analisar propostas individuais, parcerias de longo prazo e projetos em conjunto.",collab_3:"Se você tem uma proposta interessante, entre em contato comigo!",
+btn_tg:"Escrever no Telegram",btn_vkm:"Escrever no VK",btn_dc:"Entrar no Discord",
+pay_t:"Informações de pagamento",pay_1:"Antes de fazer um pedido, recomendamos entrar em contato comigo para combinar todos os detalhes, o preço e os prazos.",pay_2:"As formas de pagamento e as opções de transferência disponíveis são combinadas individualmente antes de começar o trabalho.",pay_3:"Depois de combinados o briefing técnico e o preço, enviarei os dados necessários e as próximas instruções.",pay_4:"Por favor, não envie nenhum pagamento antes da confirmação do pedido.",
+reg_t:"Para clientes fora da Rússia",reg_1:"Observe que eu moro na Rússia. Devido a restrições internacionais e ao funcionamento dos sistemas de pagamento, alguns clientes no exterior podem ter dificuldades com transferências, pagamentos ou o uso de certos serviços.",reg_2:"Se você está fora da Rússia, entre em contato comigo com antecedência para combinarmos uma forma de pagamento disponível.",reg_3:"Vou me esforçar para encontrar uma opção boa para os dois lados.",
+com_t:"Nossa comunidade",com_d:"Entre na nossa comunidade do Discord! Converse, acompanhe as novidades, comente os trabalhos e fique em contato."}
+};
+for(const l in N)T[l]=Object.assign(T[l]||{},N[l]);
+
+
 /* rub, eur (null = no euro price), category */
-const S=[["s1",50,"0.50",1],["s2",350,"3.50",1],["s3",500,"5.00",1],["s4",1500,"15.00",2],["s5",500,null,3],["s6",1000,null,3]];
+const S=[["s1",50,"0.50","0.60",1],["s2",350,"3.50","4.00",1],["s3",500,"5.00","5.70",1],["s4",1500,"15.00","17.00",2],["s5",500,"5.00","5.70",3],["s6",1000,"10.00","11.40",3]];
 
 let lang='ru';
 const t=k=>T[lang][k]||T.ru[k]||k;
-const eur=e=>lang==='en'?e:e.replace('.',',');
-const priceTxt=s=>s[1]+" ₽"+(s[2]?" / "+eur(s[2])+" €":"");
+let live=null; /* null = my fixed prices; {EUR,USD} = live rates per 1 RUB */
+const dec=v=>lang==='en'?v:v.replace('.',',');
+const vals=s=>live?[s[1],(s[1]*live.EUR).toFixed(2),(s[1]*live.USD).toFixed(2)]:[s[1],s[2],s[3]];
+const priceTxt=s=>{const v=vals(s);return v[0]+" ₽ / "+dec(v[1])+" € / $"+dec(v[2])};
 
 /* build price cards once */
 $('#cats').innerHTML=[1,2,3].map(c=>`<div class="cat rv"><h3><em>0${c}</em><span data-i18n="cat${c}"></span></h3><div class="grid">`+
-S.filter(s=>s[3]===c).map(s=>`<article class="card"><h4 data-i18n="${s[0]}n"></h4><p data-i18n="${s[0]}d"></p><div class="price" data-p="${s[0]}"></div><button class="btn red sm" data-pick="${s[0]}" data-i18n="order_btn"></button></article>`).join('')+`</div></div>`).join('');
+S.filter(s=>s[4]===c).map(s=>`<article class="card"><h4 data-i18n="${s[0]}n"></h4><p data-i18n="${s[0]}d"></p><div class="price"><span data-p="${s[0]}"></span><small data-q="${s[0]}"></small></div><button class="btn red sm" data-pick="${s[0]}" data-i18n="order_btn"></button></article>`).join('')+`</div></div>`).join('');
 
 function setLang(l,silent){
   if(!T[l])l='ru';lang=l;
   try{localStorage.setItem('graf_lang',l)}catch(e){}
-  document.documentElement.lang=l;
+  document.documentElement.lang=l==='pt'?'pt-BR':l;
   $$('[data-i18n]').forEach(e=>e.textContent=t(e.dataset.i18n));
   $$('[data-ph]').forEach(e=>e.placeholder=t(e.dataset.ph));
-  $$('[data-p]').forEach(e=>e.textContent=priceTxt(S.find(s=>s[0]===e.dataset.p)));
-  $$('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  $$('[data-p]').forEach(e=>e.textContent=vals(S.find(s=>s[0]===e.dataset.p))[0]+" ₽");
+  $$('[data-q]').forEach(e=>{const v=vals(S.find(s=>s[0]===e.dataset.q));e.textContent=dec(v[1])+" € / $"+dec(v[2])});
+  $$('#lm button').forEach(b=>{const on=b.dataset.l===l;b.classList.toggle('on',on);if(on)$('#lcur').textContent=b.dataset.f+' '+l.toUpperCase()});
   const sel=$('#service'),v=sel.value;
   sel.innerHTML=`<option value="">${t('f_choose')}</option>`+S.map(s=>`<option value="${s[0]}">${t(s[0]+'n')} — ${priceTxt(s)}</option>`).join('');
   sel.value=v;
+  renderVK();renderRev();
 }
-$$('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+$$('#lm button').forEach(b=>b.onclick=()=>{setLang(b.dataset.l);closeLm()});
 let saved;try{saved=localStorage.getItem('graf_lang')}catch(e){}
 setLang(saved||'ru');
 $('#yr').textContent=new Date().getFullYear();
@@ -377,7 +582,7 @@ function buildMsg(){
   const s=S.find(x=>x[0]===$('#service').value);
   const w=$('#wish').value.trim(),l=$('#link').value.trim();
   return ["🛒 Новый заказ — Graf Showroom","",
-   "Услуга: "+RU[s[0]+'n']+" ("+s[1]+" ₽"+(s[2]?" / "+s[2].replace('.',',')+" €":"")+")",
+   "Услуга: "+RU[s[0]+'n']+" ("+s[1]+" ₽ / "+s[2].replace('.',',')+" € / $"+s[3].replace('.',',')+")",
    "Имя / ник: "+$('#nick').value.trim(),
    "Игра: "+$('#game').value,
    "ТЗ: "+$('#tz').value.trim(),
@@ -412,6 +617,71 @@ $('#bCopy').onclick=async()=>{await copyText($('#msg').textContent);toast(t('cop
 async function send(url){await copyText($('#msg').textContent);toast(t('paste'));window.open(url,'_blank','noopener')}
 $('#bTg').onclick=()=>send('https://t.me/hasik208');
 $('#bVk').onclick=()=>send('https://vk.ru/makdok7826');
+
+/* ---------- Language menu ---------- */
+const lm=$('#lm'),lb=$('#lb');
+function closeLm(){lm.hidden=true;lb.setAttribute('aria-expanded',false)}
+lb.onclick=e=>{e.stopPropagation();lm.hidden=!lm.hidden;lb.setAttribute('aria-expanded',!lm.hidden)};
+document.addEventListener('click',e=>{if(!lm.contains(e.target))closeLm()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLm()});
+
+/* ---------- Fixed prices / live rates ---------- */
+$$('[data-r]').forEach(b=>b.onclick=async()=>{
+  if(b.dataset.r==='live'){
+    try{const r=await fetch('https://open.er-api.com/v6/latest/RUB');const j=await r.json();
+      if(j.result!=='success')throw 0;live={EUR:j.rates.EUR,USD:j.rates.USD}}
+    catch(e){toast(t('rate_err'));return}
+  }else live=null;
+  $$('[data-r]').forEach(x=>x.classList.toggle('on',x===b));
+  setLang(lang);
+});
+
+/* ---------- VK posts and reviews (static JSON files, see README) ---------- */
+var vk=null,revs=null;
+const h=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e};
+const LOC={ru:'ru-RU',en:'en-GB',de:'de-DE',es:'es-ES',pt:'pt-BR'};
+const fmtDate=d=>new Date(d*1000).toLocaleDateString(LOC[lang],{day:'numeric',month:'long',year:'numeric'});
+const okUrl=u=>typeof u==='string'&&/^https:\/\//.test(u);
+function link(cls,txt,href){const a=h('a',cls,txt);a.href=href;a.target='_blank';a.rel='noopener';return a}
+function stateBox(msg,btn){const d=h('div','state');d.append(h('p','',msg));if(btn)d.append(link('btn sm',btn,'https://vk.ru/grafshw'));return d}
+
+function renderVK(){
+  const wk=$('#wk'),up=$('#up');
+  if(!vk)return;
+  wk.replaceChildren();up.replaceChildren();
+  const g=vk.filter(p=>okUrl(p.url)),w=g.filter(p=>okUrl(p.img)).slice(0,6),n=g.filter(p=>p.text).slice(0,4);
+  if(!w.length)wk.append(stateBox(t('works_err'),t('works_all')));
+  w.forEach(p=>{
+    const c=h('article','card wk'),i=h('img');
+    i.src=p.img;i.alt='';i.loading='lazy';i.referrerPolicy='no-referrer';
+    c.append(i,h('time','dt',fmtDate(p.date)));
+    if(p.text)c.append(h('p','',p.text));
+    c.append(link('btn red sm',t('works_open'),p.url));wk.append(c);
+  });
+  if(!n.length)up.append(stateBox(t('works_err'),t('works_all')));
+  n.forEach(p=>{const a=link('upd','',p.url);a.append(h('time','dt',fmtDate(p.date)),h('p','',p.text));up.append(a)});
+}
+function renderRev(){
+  const box=$('#rv');if(!revs)return;
+  box.replaceChildren();
+  if(!revs.length){box.append(stateBox(t('rev_empty')));return}
+  revs.forEach(r=>{
+    const c=h('article','card'),k=Math.max(0,Math.min(5,Math.round(+r.rating||0)));
+    c.append(h('div','stars','★'.repeat(k)+'☆'.repeat(5-k)),h('p','',r.text||''),h('b','',r.name||''));
+    if(r.date)c.append(h('span','dt',String(r.date)));
+    if(typeof r.image==='string'&&/^(reviews\/|https:\/\/)/.test(r.image)){
+      const a=link('shot','',r.image),i=h('img');i.src=r.image;i.alt='';i.loading='lazy';a.append(i);c.append(a)}
+    box.append(c);
+  });
+}
+async function getJSON(u){try{const r=await fetch(u,{cache:'no-cache'});if(!r.ok)throw 0;return await r.json()}catch(e){return null}}
+(async()=>{
+  const m=await getJSON('posts-manual.json');
+  vk=(Array.isArray(m)?m:[])
+    .filter((p,i,arr)=>p&&arr.findIndex(q=>q&&q.url===p.url)===i).sort((x,y)=>y.date-x.date);
+  renderVK();
+  const r=await getJSON('reviews.json');revs=Array.isArray(r)?r:[];renderRev();
+})();
 </script>
 </body>
 </html>
