@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graf Showroom — GTA / SAMP / FiveM</title>
+<meta name="description" content="Graf Showroom: скины, кастомные аттачи, автомобили и плагины для GTA / SAMP / FiveM.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Cpath d='M44 22a15 15 0 1 0 2 14H33' fill='none' stroke='%23e11d2e' stroke-width='7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--card:#16171a;--card2:#1d1e22;--line:#2a2c31;--silver:#dfe2e8;--mute:#8d929b;--red:#e11d2e;--red2:#ff3b4a;
+--disp:Unbounded,"Arial Black",Impact,sans-serif;--body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--bg);color:var(--silver);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--red2);outline-offset:3px}
+.wrap{width:min(1120px,92%);margin-inline:auto}
+section{padding:96px 0}
+h2{font:700 clamp(1.5rem,4vw,2.4rem)/1.15 var(--disp);letter-spacing:-.01em}
+.lead{color:var(--mute);max-width:60ch;margin-top:14px}
+
+/* header */
+header{position:fixed;inset:0 0 auto;z-index:50;background:rgba(0,0,0,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font:700 .95rem var(--disp);letter-spacing:.04em;margin-right:auto;display:flex;align-items:center;gap:10px}
+.logo i{width:10px;height:22px;background:var(--red);transform:skewX(-14deg);display:block}
+nav{display:flex;gap:4px}
+nav a{padding:8px 14px;border-radius:8px;color:var(--mute);font-size:.95rem;transition:.2s}
+nav a:hover{color:var(--silver)}
+nav a.on{color:var(--silver);box-shadow:inset 0 -2px 0 var(--red)}
+.lang{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--mute);padding:7px 10px;font:inherit;font-size:.85rem;cursor:pointer;transition:.2s}
+.lang button:hover{color:var(--silver)}
+.lang button.on{background:var(--silver);color:#000}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--silver);width:40px;height:40px;border-radius:10px;cursor:pointer;font-size:1.2rem}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--silver);font:600 .95rem var(--body);cursor:pointer;transition:transform .2s,background .2s,border-color .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--silver)}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.btn.red:hover{background:var(--red2);border-color:var(--red2);box-shadow:0 10px 30px -8px rgba(225,29,46,.7)}
+.btn.sm{padding:10px 18px;font-size:.9rem}
+.btn svg{width:18px;height:18px;fill:currentColor}
+
+/* hero */
+#home{min-height:100svh;display:flex;align-items:center;padding:120px 0 72px;position:relative;overflow:hidden;
+background:radial-gradient(520px circle at var(--mx,70%) var(--my,30%),rgba(225,29,46,.2),transparent 70%)}
+#home:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--silver),transparent);opacity:.25}
+.mark{font:700 clamp(2.6rem,12.5vw,8rem)/.95 var(--disp);letter-spacing:-.03em}
+.mark span{display:block;color:transparent;-webkit-text-stroke:1.5px var(--silver)}
+.hero p{max-width:56ch;margin:28px 0 34px;color:#b4b8c0;font-size:1.08rem}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.adv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:64px}
+.adv div{border-left:2px solid var(--red);padding:2px 0 2px 16px}
+.adv b{display:block;font-family:var(--disp);font-weight:500;font-size:.95rem;margin-bottom:4px}
+.adv span{color:var(--mute);font-size:.92rem}
+
+/* price */
+.cat{margin-top:56px}
+.cat h3{font:500 1.05rem var(--disp);display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.cat h3:after{content:"";height:1px;flex:1;background:var(--line)}
+.cat h3 em{font-style:normal;color:var(--red)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:12px;transition:transform .25s,border-color .25s,background .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--red);background:var(--card2)}
+.card h4{font-size:1.1rem;font-weight:650}
+.card p{color:var(--mute);font-size:.95rem;flex:1}
+.price{font:700 1.5rem var(--disp);color:var(--silver);margin-top:6px}
+.price small{display:block;font:500 .78rem var(--body);color:var(--mute);margin-top:2px}
+
+/* form */
+.form{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,40px);margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.f{display:flex;flex-direction:column;gap:7px}
+.f.full{grid-column:1/-1}
+label{font-size:.88rem;color:var(--mute)}
+label b{color:var(--red2)}
+input,select,textarea{background:#0b0b0c;border:1px solid var(--line);color:var(--silver);border-radius:10px;padding:13px 14px;font:inherit;width:100%;transition:border-color .2s,box-shadow .2s}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--red);box-shadow:0 0 0 3px rgba(225,29,46,.2)}
+.bad{border-color:var(--red2)!important}
+.seg{display:flex;gap:10px}
+.seg label{flex:1;margin:0}
+.seg input{position:absolute;opacity:0;width:0}
+.seg span{display:block;text-align:center;padding:13px;border:1px solid var(--line);border-radius:10px;color:var(--silver);cursor:pointer;transition:.2s;background:#0b0b0c}
+.seg input:checked+span{background:var(--silver);color:#000;border-color:var(--silver)}
+.seg input:focus-visible+span{outline:2px solid var(--red2);outline-offset:2px}
+
+/* contacts */
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:36px}
+.link{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;transition:transform .25s,border-color .25s,background .25s}
+.link:hover{transform:translateY(-4px);border-color:var(--red);background:var(--card2)}
+.link svg{width:44px;height:44px;flex:none;padding:10px;border-radius:12px;background:#000;border:1px solid var(--line);fill:var(--silver);transition:.25s}
+.link:hover svg{background:var(--red);fill:#fff;border-color:var(--red)}
+.link b{display:block}.link span{color:var(--mute);font-size:.88rem;word-break:break-all}
+
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--mute);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+footer nav a{padding:4px 10px}
+
+/* ui */
+#toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);background:var(--silver);color:#000;padding:12px 20px;border-radius:12px;font-weight:600;opacity:0;pointer-events:none;transition:.3s;z-index:90;max-width:92vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--silver);font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;z-index:40}
+#top.show{opacity:1;pointer-events:auto}#top:hover{background:var(--red);border-color:var(--red)}
+dialog{margin:auto;width:min(560px,92vw);background:var(--card);color:var(--silver);border:1px solid var(--line);border-radius:20px;padding:28px}
+dialog::backdrop{background:rgba(0,0,0,.8);backdrop-filter:blur(4px)}
+dialog[open]{animation:pop .3s ease}
+@keyframes pop{from{opacity:0;transform:scale(.94) translateY(10px)}}
+dialog h3{font:700 1.2rem var(--disp);display:flex;gap:12px;align-items:center}
+dialog h3:before{content:"✓";display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;font-size:1rem;flex:none}
+dialog p{color:var(--mute);margin:12px 0}
+pre{background:#0b0b0c;border:1px solid var(--line);border-radius:12px;padding:16px;white-space:pre-wrap;word-break:break-word;font:.88rem/1.55 ui-monospace,Menlo,Consolas,monospace;max-height:36vh;overflow:auto}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:860px){
+.burger{display:block}
+nav{position:fixed;inset:64px 0 auto;background:#000;border-bottom:1px solid var(--line);flex-direction:column;padding:12px 4%;transform:translateY(-130%);transition:transform .35s;z-index:-1}
+nav.open{transform:none}
+nav a{padding:14px 10px;font-size:1.05rem}
+.adv{grid-template-columns:1fr}
+.form{grid-template-columns:1fr}
+section{padding:72px 0}
+}
+@media(max-width:420px){.logo span{display:none}.cta .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap bar">
+  <a class="logo" href="#home" aria-label="Graf Showroom"><i></i><span>GRAF SHOWROOM</span></a>
+  <nav id="nav">
+    <a href="#home" data-i18n="nav_home"></a>
+    <a href="#price" data-i18n="nav_price"></a>
+    <a href="#order" data-i18n="nav_order"></a>
+    <a href="#contact" data-i18n="nav_contact"></a>
+  </nav>
+  <div class="lang" role="group" aria-label="Language">
+    <button data-l="ru">🇷🇺 RU</button><button data-l="en">🇬🇧 EN</button><button data-l="de">🇩🇪 DE</button>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
+</div>
+</header>
+
+<main>
+<section id="home">
+  <div class="wrap hero">
+    <h1 class="mark">GRAF<span>SHOWROOM</span></h1>
+    <p data-i18n="hero_desc"></p>
+    <div class="cta">
+      <a class="btn red" href="#order" data-i18n="btn_order"></a>
+      <a class="btn" href="#price" data-i18n="btn_price"></a>
+      <a class="btn" href="https://vk.ru/grafshw" target="_blank" rel="noopener" data-i18n="btn_group"></a>
+    </div>
+    <div class="adv">
+      <div><b data-i18n="a1t"></b><span data-i18n="a1d"></span></div>
+      <div><b data-i18n="a2t"></b><span data-i18n="a2d"></span></div>
+      <div><b data-i18n="a3t"></b><span data-i18n="a3d"></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="price">
+  <div class="wrap">
+    <h2 class="rv" data-i18n="price_t"></h2>
+    <p class="lead rv" data-i18n="price_d"></p>
+    <div id="cats"></div>
+  </div>
+</section>
+
+<section id="order">
+  <div class="wrap">
+    <h2 class="rv" data-i18n="form_t"></h2>
+    <p class="lead rv" data-i18n="form_d"></p>
+    <form class="form rv" id="form" novalidate>
+      <div class="f full"><label for="service"><span data-i18n="f_service"></span> <b>*</b></label><select id="service" required></select></div>
+      <div class="f"><label for="nick"><span data-i18n="f_name"></span> <b>*</b></label><input id="nick" required maxlength="60" autocomplete="nickname" data-ph="f_name_ph"></div>
+      <div class="f"><label for="game"><span data-i18n="f_game"></span> <b>*</b></label>
+        <select id="game" required><option value="GTA">GTA</option><option value="SAMP">SAMP</option><option value="FiveM">FiveM</option></select></div>
+      <div class="f full"><label for="tz"><span data-i18n="f_tz"></span> <b>*</b></label><textarea id="tz" required maxlength="2000" data-ph="f_tz_ph"></textarea></div>
+      <div class="f full"><label for="wish" data-i18n="f_wish"></label><textarea id="wish" maxlength="1000" data-ph="f_wish_ph"></textarea></div>
+      <div class="f full"><label for="link" data-i18n="f_link"></label><input id="link" type="url" inputmode="url" data-ph="f_link_ph"></div>
+      <div class="f"><label data-i18n="f_method"></label>
+        <div class="seg"><label><input type="radio" name="m" value="Telegram" checked><span>Telegram</span></label><label><input type="radio" name="m" value="VK"><span>VK</span></label></div></div>
+      <div class="f"><label for="contact"><span data-i18n="f_contact"></span> <b>*</b></label><input id="contact" required maxlength="80" data-ph="f_contact_ph"></div>
+      <div class="f full"><button class="btn red" type="submit" data-i18n="f_submit"></button></div>
+    </form>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2 class="rv" data-i18n="contact_t"></h2>
+    <p class="lead rv" data-i18n="contact_d"></p>
+    <div class="links rv">
+      <a class="link" href="https://vk.ru/makdok7826" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12.8 17.5c-6 0-9.4-4.1-9.5-11h3c.1 5 2.3 7.100 4.100 7.500V6.500h2.800v4.300c1.700-.2 3.500-2.100 4.100-4.300h2.800c-.5 2.700-2.400 4.600-3.800 5.400 1.400.7 3.600 2.300 4.400 5.600h-3.100c-.7-2.100-2.300-3.700-4.400-3.900v3.900h-.4z"/></svg><div><b>VK</b><span>vk.ru/makdok7826</span></div></a>
+      <a class="link" href="https://t.me/hasik208" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.500 3.500 2.800 10.700c-.9.400-.9 1.100-.2 1.300l4.800 1.500 1.800 5.600c.2.600.4.800.8.800.4 0 .6-.2.900-.5l2.300-2.200 4.700 3.500c.9.500 1.500.2 1.700-.8l3.100-14.600c.3-1.200-.4-1.800-1.400-1.300zM9 13.500l8.500-5.300c.4-.3.800-.1.500.2L11 14.800l-.3 3.200L9 13.500z"/></svg><div><b>Telegram</b><span>@hasik208</span></div></a>
+      <a class="link" href="https://vk.ru/grafshw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9h-8.500v-2.500h5.700A6.500 6.500 0 1 1 12 5.500c1.300 0 2.500.4 3.500 1l1.800-1.900A9 9 0 0 0 12 3z"/></svg><div><b>Graf Showroom</b><span>vk.ru/grafshw</span></div></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="yr"></span> Graf Showroom — <span data-i18n="foot"></span></div>
+    <nav style="position:static;display:flex;flex-direction:row;transform:none;background:none;border:0;padding:0">
+      <a href="https://vk.ru/grafshw" target="_blank" rel="noopener">VK</a>
+      <a href="https://t.me/hasik208" target="_blank" rel="noopener">Telegram</a>
+    </nav>
+  </div>
+</footer>
+
+<button id="top" aria-label="Up">↑</button>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<dialog id="dlg">
+  <h3 data-i18n="res_t"></h3>
+  <p data-i18n="res_d"></p>
+  <pre id="msg"></pre>
+  <div class="acts">
+    <button class="btn" id="bCopy" data-i18n="res_copy"></button>
+    <button class="btn red" id="bTg">Telegram</button>
+    <button class="btn" id="bVk">VK</button>
+    <button class="btn" id="bClose" data-i18n="res_close"></button>
+  </div>
+</dialog>
+
+<script>
+document.documentElement.classList.add('js');
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+/* ---------- Translations ---------- */
+const T={
+ru:{nav_home:"Главная",nav_price:"Прайс-лист",nav_order:"Заказ",nav_contact:"Контакты",
+hero_desc:"Graf Showroom — создание уникального игрового контента для GTA / SAMP / FiveM. Качественные скины, кастомные аттачи, автомобили и разработка плагинов. Индивидуальный подход к каждому заказу.",
+btn_order:"Оформить заказ",btn_price:"Посмотреть прайс",btn_group:"Наша группа ВКонтакте",
+a1t:"Индивидуальный подход",a1d:"Каждый заказ делается под ваше техническое задание.",
+a2t:"Весь игровой контент",a2d:"Скины, аттачи, автомобили и плагины для SAMP и FiveM.",
+a3t:"Связь напрямую",a3d:"Общаетесь со мной лично в VK или Telegram.",
+price_t:"Прайс-лист",price_d:"Здесь вы можете ознакомиться со стоимостью моих услуг по созданию и редактированию контента для GTA / SAMP.",
+cat1:"Персональные заказы",cat2:"Кастомные аттачи",cat3:"Разработка плагинов",order_btn:"Заказать",
+s1n:"Пересадка головы",s1d:"Редактирование модели: перенос головы на выбранного персонажа.",
+s2n:"Полицейский скин по вашему ТЗ",s2d:"Создание полицейского скина по вашему техническому заданию.",
+s3n:"Заказ автомобиля",s3d:"Автомобиль для GTA / SAMP по вашему запросу.",
+s4n:"Пак кастомных аттачей",s4d:"Покупка пака моих кастомных аттачей.",
+s5n:"Плагин для SAMP",s5d:"Написание плагина для SAMP под вашу задачу.",
+s6n:"Плагин для FiveM",s6d:"Написание плагина для FiveM под вашу задачу.",
+form_t:"Оформить заказ",form_d:"Заполните форму — я соберу текст заказа, а вы отправите его мне в VK или Telegram.",
+f_service:"Услуга",f_choose:"Выберите услугу",f_name:"Имя или игровой ник",f_name_ph:"Например, Alex_Graf",f_game:"Игра",
+f_tz:"Техническое задание",f_tz_ph:"Опишите, что именно нужно сделать",f_wish:"Дополнительные пожелания",f_wish_ph:"Сроки, детали, примеры (необязательно)",
+f_link:"Ссылка на профиль или материалы",f_link_ph:"https://",f_method:"Способ связи",f_contact:"Ваш контакт",f_contact_ph:"@username или ссылка на VK",
+f_submit:"Отправить заказ",err:"Заполните отмеченные поля",ok:"Заказ сформирован",
+res_t:"Заказ готов к отправке",res_d:"Заказ ещё не отправлен. Нажмите кнопку ниже: текст скопируется, и откроется мой чат — вставьте его и отправьте.",
+res_copy:"Скопировать текст",res_close:"Закрыть",copied:"Текст заказа скопирован",paste:"Текст скопирован — вставьте его в чат и отправьте",
+sel:"Выбрана услуга: ",contact_t:"Связаться со мной",contact_d:"Вопросы по заказу или прайсу — пишите в любой удобный мессенджер.",foot:"игровой контент для GTA / SAMP / FiveM"},
+
+en:{nav_home:"Home",nav_price:"Price list",nav_order:"Order",nav_contact:"Contact",
+hero_desc:"Graf Showroom creates original game content for GTA / SAMP / FiveM. Quality skins, custom attachments, cars and plugin development. A personal approach to every order.",
+btn_order:"Place an order",btn_price:"View prices",btn_group:"Our VK group",
+a1t:"Personal approach",a1d:"Every order is made to your own brief.",
+a2t:"All kinds of game content",a2d:"Skins, attachments, cars and plugins for SAMP and FiveM.",
+a3t:"Direct contact",a3d:"You talk to me personally on VK or Telegram.",
+price_t:"Price list",price_d:"Here you can see the cost of my services for creating and editing content for GTA / SAMP.",
+cat1:"Personal orders",cat2:"Custom attachments",cat3:"Plugin development",order_btn:"Order",
+s1n:"Head swap",s1d:"Model editing: moving a head onto the character you choose.",
+s2n:"Police skin to your brief",s2d:"A police skin created from your own technical brief.",
+s3n:"Car order",s3d:"A car for GTA / SAMP made to your request.",
+s4n:"Custom attachments pack",s4d:"Purchase of my pack of custom attachments.",
+s5n:"SAMP plugin",s5d:"A SAMP plugin written for your task.",
+s6n:"FiveM plugin",s6d:"A FiveM plugin written for your task.",
+form_t:"Place an order",form_d:"Fill in the form — it builds your order text, and you send it to me on VK or Telegram.",
+f_service:"Service",f_choose:"Choose a service",f_name:"Name or in-game nickname",f_name_ph:"For example, Alex_Graf",f_game:"Game",
+f_tz:"Technical brief",f_tz_ph:"Describe what exactly you need",f_wish:"Additional wishes",f_wish_ph:"Deadline, details, examples (optional)",
+f_link:"Link to your profile or materials",f_link_ph:"https://",f_method:"Contact method",f_contact:"Your contact",f_contact_ph:"@username or VK link",
+f_submit:"Send order",err:"Please fill in the marked fields",ok:"Order created",
+res_t:"Your order is ready to send",res_d:"The order has not been sent yet. Press a button below: the text is copied and my chat opens — paste it and send.",
+res_copy:"Copy text",res_close:"Close",copied:"Order text copied",paste:"Text copied — paste it into the chat and send",
+sel:"Service selected: ",contact_t:"Contact me",contact_d:"Questions about an order or prices — message me on whichever app suits you.",foot:"game content for GTA / SAMP / FiveM"},
+
+de:{nav_home:"Start",nav_price:"Preisliste",nav_order:"Bestellen",nav_contact:"Kontakt",
+hero_desc:"Graf Showroom – einzigartige Spielinhalte für GTA / SAMP / FiveM. Hochwertige Skins, individuelle Attachments, Fahrzeuge und Plugin-Entwicklung. Persönliche Betreuung bei jeder Bestellung.",
+btn_order:"Bestellung aufgeben",btn_price:"Preise ansehen",btn_group:"Unsere VK-Gruppe",
+a1t:"Persönliche Betreuung",a1d:"Jede Bestellung entsteht nach Ihrer eigenen Vorgabe.",
+a2t:"Alle Spielinhalte",a2d:"Skins, Attachments, Fahrzeuge und Plugins für SAMP und FiveM.",
+a3t:"Direkter Kontakt",a3d:"Sie schreiben mir persönlich auf VK oder Telegram.",
+price_t:"Preisliste",price_d:"Hier sehen Sie die Preise meiner Leistungen für die Erstellung und Bearbeitung von Inhalten für GTA / SAMP.",
+cat1:"Persönliche Aufträge",cat2:"Individuelle Attachments",cat3:"Plugin-Entwicklung",order_btn:"Bestellen",
+s1n:"Kopf-Transplantation",s1d:"Modellbearbeitung: Übertragung eines Kopfes auf den gewählten Charakter.",
+s2n:"Polizei-Skin nach Ihrer Vorgabe",s2d:"Ein Polizei-Skin nach Ihrer technischen Vorgabe.",
+s3n:"Fahrzeug-Auftrag",s3d:"Ein Fahrzeug für GTA / SAMP nach Ihrem Wunsch.",
+s4n:"Paket individueller Attachments",s4d:"Kauf meines Pakets individueller Attachments.",
+s5n:"Plugin für SAMP",s5d:"Ein SAMP-Plugin passend zu Ihrer Aufgabe.",
+s6n:"Plugin für FiveM",s6d:"Ein FiveM-Plugin passend zu Ihrer Aufgabe.",
+form_t:"Bestellung aufgeben",form_d:"Formular ausfüllen – daraus entsteht der Bestelltext, den Sie mir per VK oder Telegram senden.",
+f_service:"Leistung",f_choose:"Leistung wählen",f_name:"Name oder Spielname",f_name_ph:"Zum Beispiel Alex_Graf",f_game:"Spiel",
+f_tz:"Technische Beschreibung",f_tz_ph:"Beschreiben Sie, was genau gemacht werden soll",f_wish:"Zusätzliche Wünsche",f_wish_ph:"Frist, Details, Beispiele (optional)",
+f_link:"Link zu Profil oder Materialien",f_link_ph:"https://",f_method:"Kontaktweg",f_contact:"Ihr Kontakt",f_contact_ph:"@username oder VK-Link",
+f_submit:"Bestellung senden",err:"Bitte die markierten Felder ausfüllen",ok:"Bestellung erstellt",
+res_t:"Ihre Bestellung ist versandbereit",res_d:"Die Bestellung wurde noch nicht gesendet. Klicken Sie unten: Der Text wird kopiert und mein Chat öffnet sich – einfügen und absenden.",
+res_copy:"Text kopieren",res_close:"Schließen",copied:"Bestelltext kopiert",paste:"Text kopiert – im Chat einfügen und senden",
+sel:"Leistung gewählt: ",contact_t:"Kontakt",contact_d:"Fragen zu Bestellung oder Preisen – schreiben Sie mir in dem Messenger, der Ihnen passt.",foot:"Spielinhalte für GTA / SAMP / FiveM"}
+};
+
+/* rub, eur (null = no euro price), category */
+const S=[["s1",50,"0.50",1],["s2",350,"3.50",1],["s3",500,"5.00",1],["s4",1500,"15.00",2],["s5",500,null,3],["s6",1000,null,3]];
+
+let lang='ru';
+const t=k=>T[lang][k]||T.ru[k]||k;
+const eur=e=>lang==='en'?e:e.replace('.',',');
+const priceTxt=s=>s[1]+" ₽"+(s[2]?" / "+eur(s[2])+" €":"");
+
+/* build price cards once */
+$('#cats').innerHTML=[1,2,3].map(c=>`<div class="cat rv"><h3><em>0${c}</em><span data-i18n="cat${c}"></span></h3><div class="grid">`+
+S.filter(s=>s[3]===c).map(s=>`<article class="card"><h4 data-i18n="${s[0]}n"></h4><p data-i18n="${s[0]}d"></p><div class="price" data-p="${s[0]}"></div><button class="btn red sm" data-pick="${s[0]}" data-i18n="order_btn"></button></article>`).join('')+`</div></div>`).join('');
+
+function setLang(l,silent){
+  if(!T[l])l='ru';lang=l;
+  try{localStorage.setItem('graf_lang',l)}catch(e){}
+  document.documentElement.lang=l;
+  $$('[data-i18n]').forEach(e=>e.textContent=t(e.dataset.i18n));
+  $$('[data-ph]').forEach(e=>e.placeholder=t(e.dataset.ph));
+  $$('[data-p]').forEach(e=>e.textContent=priceTxt(S.find(s=>s[0]===e.dataset.p)));
+  $$('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  const sel=$('#service'),v=sel.value;
+  sel.innerHTML=`<option value="">${t('f_choose')}</option>`+S.map(s=>`<option value="${s[0]}">${t(s[0]+'n')} — ${priceTxt(s)}</option>`).join('');
+  sel.value=v;
+}
+$$('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+let saved;try{saved=localStorage.getItem('graf_lang')}catch(e){}
+setLang(saved||'ru');
+$('#yr').textContent=new Date().getFullYear();
+
+/* ---------- UI helpers ---------- */
+let tt;
+function toast(m){const e=$('#toast');e.textContent=m;e.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('show'),2800)}
+
+/* mobile menu */
+const nav=$('#nav'),bg=$('#burger');
+bg.onclick=()=>{const o=nav.classList.toggle('open');bg.setAttribute('aria-expanded',o);bg.textContent=o?'✕':'☰'};
+$$('#nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');bg.textContent='☰';bg.setAttribute('aria-expanded',false)}));
+
+/* back to top */
+const up=$('#top');
+addEventListener('scroll',()=>up.classList.toggle('show',scrollY>700),{passive:true});
+up.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+
+/* reveal + active nav */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+$$('.rv').forEach(e=>io.observe(e));
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$('#nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+$$('main section').forEach(s=>so.observe(s));
+
+/* hero spotlight */
+const hero=$('#home');
+hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();hero.style.setProperty('--mx',(e.clientX-r.left)+'px');hero.style.setProperty('--my',(e.clientY-r.top)+'px')});
+
+/* ---------- Order flow ---------- */
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-pick]');if(!b)return;
+  $('#service').value=b.dataset.pick;$('#service').classList.remove('bad');
+  $('#order').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>$('#nick').focus({preventScroll:true}),600);
+  toast(t('sel')+t(b.dataset.pick+'n'));
+});
+
+const RU=T.ru;
+function buildMsg(){
+  const s=S.find(x=>x[0]===$('#service').value);
+  const w=$('#wish').value.trim(),l=$('#link').value.trim();
+  return ["🛒 Новый заказ — Graf Showroom","",
+   "Услуга: "+RU[s[0]+'n']+" ("+s[1]+" ₽"+(s[2]?" / "+s[2].replace('.',',')+" €":"")+")",
+   "Имя / ник: "+$('#nick').value.trim(),
+   "Игра: "+$('#game').value,
+   "ТЗ: "+$('#tz').value.trim(),
+   w?"Пожелания: "+w:null, l?"Ссылка: "+l:null,
+   "Связь: "+document.querySelector('[name=m]:checked').value+" — "+$('#contact').value.trim()
+  ].filter(x=>x!==null).join("\n");
+}
+
+async function copyText(txt){
+  try{await navigator.clipboard.writeText(txt);return true}catch(e){
+    const a=document.createElement('textarea');a.value=txt;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();
+    let ok=false;try{ok=document.execCommand('copy')}catch(e){}a.remove();return ok}
+}
+
+$('#form').addEventListener('submit',e=>{
+  e.preventDefault();
+  let bad=false;
+  $$('#form [required]').forEach(f=>{const x=!f.value.trim();f.classList.toggle('bad',x);if(x&&!bad){f.focus();}bad=bad||x});
+  const lk=$('#link'),lbad=lk.value.trim()&&!/^https?:\/\/\S+\.\S+/i.test(lk.value.trim());
+  lk.classList.toggle('bad',!!lbad);
+  if(bad||lbad){toast(t('err'));return}
+  $('#msg').textContent=buildMsg();
+  $('#dlg').showModal();
+  toast(t('ok'));
+});
+$$('#form input,#form select,#form textarea').forEach(f=>f.addEventListener('input',()=>f.classList.remove('bad')));
+
+const dlg=$('#dlg');
+$('#bClose').onclick=()=>dlg.close();
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+$('#bCopy').onclick=async()=>{await copyText($('#msg').textContent);toast(t('copied'))};
+async function send(url){await copyText($('#msg').textContent);toast(t('paste'));window.open(url,'_blank','noopener')}
+$('#bTg').onclick=()=>send('https://t.me/hasik208');
+$('#bVk').onclick=()=>send('https://vk.ru/makdok7826');
+</script>
+</body>
+</html>
